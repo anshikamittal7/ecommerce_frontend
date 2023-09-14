@@ -1,0 +1,17 @@
+main {
+  flex: 1;
+  h1 {
+    padding: 2% 0;
+  }
+  .products {
+    .product {
+      img {
+        width: 70%;
+        max-width: 400px;
+      }
+      .info {
+        padding: 1rem;
+      }
+    }
+  }
+}

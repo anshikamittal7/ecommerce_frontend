@@ -1,0 +1,92 @@
+@import "./color.scss";
+.cart {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+
+  > main {
+    padding: 0.5rem;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    > div {
+      > Button {
+        > Link {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  > aside {
+    border-radius: 60px 0 0 60px;
+    background-color: $primary;
+    color: $tertiary;
+    height: 100%;
+    width: 100%;
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.182);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    > h2 {
+      margin: 1rem;
+      font: 100 1.4rem "Roboto";
+      letter-spacing: 2px;
+
+      &:last-of-type {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.cartItem {
+  box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.182);
+  background-color: $tertiary;
+  width: 100%;
+  border-radius: 10px;
+  margin: 2rem 0;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+  }
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: $primary;
+      color: $tertiary;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: $primaryDark;
+      }
+    }
+    > svg {
+      cursor: pointer;
+      font-size: 2rem;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    p {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+    }
+  }
+}
