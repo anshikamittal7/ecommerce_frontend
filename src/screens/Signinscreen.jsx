@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
 import { userSignin } from "../redux/userSlice"; // Import the userSignin action
-// import { getError } from "../";
+// import { getError } from '../utils.js';
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -14,9 +14,8 @@ export default function SigninScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch(); // Initialize useDispatch
-  const userInfo = useSelector((state) => state.user.userInfo); // Get userInfo from Redux store
-
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user.userInfo);
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get("redirect");
   const redirect = redirectInUrl ? redirectInUrl : "/";
@@ -28,12 +27,11 @@ export default function SigninScreen() {
         email,
         password,
       });
-      // dispatch(userSignin(data)); 
-      // localStorage.setItem("userInfo", JSON.stringify(data));
-      // navigate(redirect || "/");
-      console.log(data);
+      dispatch(userSignin(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate(redirect || "/");
     } catch (err) {
-      // toast.error("error");
+      toast.error("Invalid username or password");
     }
   };
 
@@ -55,7 +53,7 @@ export default function SigninScreen() {
             type="email"
             placeholder="Email"
             required
-            value={email} // Use value prop to bind to state
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
@@ -64,7 +62,7 @@ export default function SigninScreen() {
             type="password"
             placeholder="Password"
             required
-            value={password} // Use value prop to bind to state
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
